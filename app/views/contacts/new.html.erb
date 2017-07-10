@@ -1,0 +1,36 @@
+<div class="container" style="width:40%;">
+  <br/>
+  <h2>Contactar</h2>
+<%= simple_form_for @contact , :html => {:class => 'form-group' } do |f| %>
+    <%= f.input :name, :required => true, id:"contact_input_name", placeholder:"Nombre" , class: "form-control" , label: false  %>
+    <%= f.input :email, :required => true ,  id:"contact_input_email", placeholder:"Email" , class: "form-control" , label: false  %>
+    <%= f.input :tel ,   placeholder: "Telefono", class: "form-control", label: false %>
+    <%= f.text_area( :message ,   placeholder: "Cuéntanos", id:"txtarea-msg", class: "form-control", label: false) %>
+    <div
+      </br>
+      <%= f.button :submit, 'Contactar', class: "btn btn-default", id:"btn-contact" %>
+    </div>
+<% end %>
+</div>
+<style>
+.input {
+  margin:8px;  
+  font-size:8px;
+
+}
+input[type="text"], input[type="password"], input[type="email"], select {
+    height: 2.0em ;
+}
+
+textarea.form-control , #btn-contact{
+    width: 97%;
+    margin: 8px;
+}
+textarea.form-control {
+  
+      height: 200px;
+    
+}
+
+</style>
+

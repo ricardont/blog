@@ -1,0 +1,14 @@
+.container-fluid{
+
+ h-align:middle;
+ margin-top:2%;
+
+}
+.btn-default {
+  background-color: white !important;
+  color: #4A5699    !important;
+} 
+.btn-default:hover{
+  background-color: #4A5699 !important;
+  color: white    !important;
+} 

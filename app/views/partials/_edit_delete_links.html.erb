@@ -1,0 +1,3 @@
+
+<% avatar ||= article %>
+<%= link_to "Eliminar" , avatar , method: :delete %> | <%= link_to "Modificar" , edit_article_path(avatar), method: :get %> | Visitas:<%= avatar.visits %> 

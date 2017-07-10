@@ -1,0 +1,30 @@
+<div class="navbar  navbar-inverse  navbar-static-top ">
+        <div class="navbar-header">
+
+	   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+       </button>
+        <a class="navbar-brand" rel="home" href="/" ><img src="/assets/logo_inmo_white.png"></a>
+        </div>
+        <div class="navbar-collapse collapse navbar-right ">
+          <ul class="nav navbar-nav">
+                     <% if user_signed_in?%>  
+                    <li><div id="user_name"><p><%= current_user.email  %></p></div></li>
+                    <%end%>
+                    <li><%=link_to "Inicio", root_path,  method: :get  %></li>
+                    <li><%=link_to "Catalogo", "/articles",toggle: :collapse  %></li>
+                    <li><%=link_to "Quiero Vender", root_path, toggle: :collapse  %></li>
+                    <li><%=link_to "Contacto", "/contacts/new" ,  method: :get,  toggle: :collapse  %></li>
+                    <li >
+                        <% if user_signed_in?%>
+                            <li><%= link_to "Publicar", "/articles/new" ,  method: :get,  toggle: :collapse  %> </li>
+                            <li><%= link_to "Salir", destroy_user_session_path, toggle: :collapse  %> </li>
+                        <%end%>
+                    </li>
+          </ul>
+        </div>
+    </div>
+    

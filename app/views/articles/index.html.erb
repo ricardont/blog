@@ -1,0 +1,107 @@
+<div class=" container-fluid" >
+    <div class="row row-first slider_index "  class="col-xs-12 col-sm-12 col-lg-12" >
+		    <% @articles.each do |article, index | %>
+				<div class="slide"  >
+					<%=  link_to (image_tag article.images.first.dir_url(:mini).to_s) , article  %>
+					<div class="art_footer">
+						<p>
+							<%= article.location  %> 	<br/>		
+							<% if user_signed_in? %>
+								<% if current_user.permission_lvl == 0 %>
+	                         		<%=  render "partials/edit_delete_links", avatar: article	%>
+								<%end%>	
+							<%end%>	
+						</p>
+					</div>
+				</div>
+			<%end%>
+    </div>
+</div>
+
+<div class=" container-fluid" >
+    <div  id="map_index" class="row row-second" class="col-xs-12 col-sm-12 col-lg-12">
+    </div>
+</div>
+    
+<style>
+.art_footer,.art_footer > p {
+		line-height: normal ;
+		 font-size:14px;
+		 margin:5px 0 5px 0;
+}
+
+#bx-viewport{
+    margin-top: 1% !important;
+}
+.bx-viewport{
+    height:200px
+}
+.bx-wrapper {
+    margin-bottom: 0px !important;
+}
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.row-first {
+    height:200px;
+    position: relative;
+}
+.row-second {
+  border: solid black 1px;
+  position: relative;
+  height:500px;
+}
+
+.panel-group{
+    width: 100%;
+    position: absolute;
+}
+ 
+
+</style>
+
+<script>
+$(document).ready(function(){
+    var mymap = L.map('map_index').setView([0, 0], 13);
+	L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    	subdomains: ['a','b','c'],
+      	maxZoom: 18
+	}).addTo( mymap );
+	
+	$.ajax({
+		dataType: 'text',
+		url: '/articles.json',
+		success: function (data) {
+			var geojson = $.parseJSON(data);
+			L.geoJSON(geojson).addTo(mymap);
+			mymap.fitBounds(L.geoJSON(geojson).getBounds());
+	        var layerGroup = L.geoJSON(geojson, {
+      			onEachFeature: function (feature, layer) {
+      				if (feature.properties && feature.properties.popupContent) {
+      					layer.bindPopup('<strong><h4>' + feature.properties.location  + '</h4><br/><h4>$' + feature.properties.price + '</h4></strong>');
+              
+                		layer.on('mouseover', function() { layer.openPopup(); });
+                		layer.on('mouseout', function() { layer.closePopup(); });
+            		}
+      				
+      			}
+    		}).addTo(mymap);
+
+		}			
+	});
+	
+	//slide articles logic
+	$('.slider_index').bxSlider({
+    	slideWidth: 250,
+    	minSlides: 1,
+    	maxSlides: 6,
+    	moveSlides: 3,
+    	slideMargin: 5, 
+    	pager: false    
+    });
+
+});  
+</script>

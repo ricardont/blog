@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: UTF8
+  database: cc_database
+  pool: 5
+  username: ubuntu
+  password: airbag21
+test:
+  adapter: postgresql
+  encoding: UTF8
+  database: cc_database
+  pool: 5
+  username: ubuntu
+  password: airbag21
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: sml
+  username: ricardoont
+  password: sml-admin
+  host: sml-db.clvflcstr9ya.us-east-1.rds.amazonaws.com
+  port: 543

@@ -1,0 +1,265 @@
+<div class="container" style=" width:98%; height:100%">
+    <div class="row">
+        <br/>
+        <div class="col-sm-12 col-lg-8 col-md-8 col-xs-12 pictures">
+             <h4><%= @article.location %> </h4>             
+       	</div>	
+       	<div class="col-sm-12 col-lg-4 col-md-4 col-xs-12 pictures">
+             <h4><strong>Precio: <%= number_to_currency(@article.price , precision: 2) %></strong></h4> 
+       	</div>	
+
+
+    </div>
+    <div class="row">
+            <div class="col-sm-12 col-lg-8 col-md-8 col-xs-12 pictures">
+                <div class="row">
+            <div class="col-sm-12 col-lg-12 col-md-12 col-xs-12">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+            <ol class="carousel-indicators">
+
+                          <!-- Wrapper for slides -->
+
+                               <% @article.images.each.with_index do |image ,  index| %>
+                               <% if index == 0%>
+                               	<% itm='class= "active"'%>
+                               <%else%>
+                                <% itm=''%>
+                               <%end%>
+                               <li data-target="#myCarousel" <%=itm%> data-slide-to="<%=index%>">
+                               </li>
+                               <%end%>
+  
+                           
+            </ol>
+            
+            
+            
+            
+            
+                             <!-- Wrapper for slides -->
+                             <div class="carousel-inner" role="listbox">
+                               <% @article.images.each.with_index do |image ,  index| %>
+                               <% if index == 0%>
+                               	<% itm='item active'%>
+                               <%else%>
+                                <% itm='item'%>
+                               <%end%>
+                               <div  class="<%=itm%>">
+                                 <%= image_tag image.dir_url(:large).to_s, class:"img-responsive" %> 
+                               </div>
+                               <%end%>
+                             </div>
+                           
+                             <!-- Left and right controls -->
+                             <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                               <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                               <span class="sr-only">Previous</span>
+                             </a>
+                             <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                               <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                               <span class="sr-only">Next</span>
+                             </a>
+                           </div>
+                </div>
+                
+             </div>
+                <div class="row">
+                <div class="col-sm-12 col-lg-12 col-md-12 col-xs-12" >
+                  <!-- thumb navigation carousel -->
+                    <div  id="slider-thumbs"  class="panel panel-default" style="padding:8px;">
+                            <!-- thumb navigation carousel items -->
+                             <ul class="list-inline" class="panel-body" style="margin:0 0 0 0;" >
+
+                             <!-- Wrapper for thumbnails -->
+  
+                               <% @article.images.each.with_index do |image ,  index| %>
+                               <% if index == 0%>
+                               	    <% itm_class='class="selected"'%>
+                               <%else%>
+                                    <% itm_class=''%>
+                               <%end%>
+                               <li> 
+                                   <a id="carousel-selector-<%=index%>" <%=itm_class%> >
+                                       <%= image_tag image.dir_url(:mini).to_s, class:"img-responsive thumb-slide-img" %> 
+                                   </a>
+                               </li>
+                                <%end%>
+                            </ul>
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-8 col-md-8 col-xs-12 "  style=" width:100%;" >
+               <div class="panel panel-default" style="  margin:0 0 0.5em 0;" >
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <div data-toggle="collapse"  id="head_collapse_desc"  >Descripcion</div>
+      </h4>
+    </div>
+    <div id="collapse_desc" class="info-panel" >
+      <div class="panel-body" style="height:350px; overflow: auto;"><%= @article.desc %></div>
+    </div>
+  </div>      
+       	            </div>	
+                </div>
+   
+           </div> 
+           <div class="col-sm-12 col-lg-4 col-md-4 col-xs-12 ">
+            <div class="panel-group " id="accordion">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">
+                        <div  data-toggle="collapse"  id="header-collapse1" ><strong>Datos de la Propiedad</strong></div>
+                      </h3>
+                    </div>
+                    <div id="collapse1" class="info-panel">
+                          <div class="panel-body">
+                            <table class="table table-condensed" id ="article_info">
+    						  <tr class="trst-group-item ">
+    						       <td class="table-row-title">Metros Totales:</td><td><%= @article.sq_mts_t %></td> 
+    						  </tr>
+    						  <tr class="trst-group-item">
+    						       <td class="table-row-title">Metros Construidos:</td><td><%= @article.sq_mts_c %></td> 
+    						  </tr> 
+    					 	 <tr class="trst-group-item">
+    					 	      <td class="table-row-title">Baños:</td><td><%= @article.baths %></td>
+    					 	 </tr>
+    					 	 <tr class="trst-group-item">
+    					 	      <td class="table-row-title" >Plantas:</td><td><%= @article.lvls %></td>
+    					 	 </tr>
+    					 	 <tr class="trst-group-item">
+    					 	      <td class="table-row-title" >Espacios en Cochera:</td><td><%= @article.parks %></td>
+    					 	 </tr> 
+    				       </table>
+                          </div>
+                    </div>
+            </div>
+
+           
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <div  data-toggle="collapse" data-parent="#accordion" id="header-collapse2" ><strong>Quiero saber mas</strong></div>
+                      </h4>
+                    </div>
+                          <div id="collapse2"  class="info-panel panel-body " >
+                             
+   
+                                     <%= render  'contacts/contact_form' %>
+                            
+                           
+                          </div>
+                  </div>
+                 <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <div data-toggle="collapse" data-parent="#accordion" id="header-collapse3"  ><strong>Como llegar</strong></div>
+                      </h4>
+                    </div>
+                    <div id="collapse3"   class="panel-body   " >
+                        <div id="mapdiv"  style="position:relative; width:100%; height:250px;" ></div>
+                    </div>
+                  </div>
+                </div>
+            <% if user_signed_in? %>
+                <% if current_user.permission_lvl == 0 %>
+                    <p style="font-size:16px"><strong><%=  render "partials/edit_delete_links", avatar: @article  %></strong> </p>
+                <%end%>
+            <%end%>    
+    </div>        
+    </div>
+</div>
+
+
+<style>
+
+/* Samsung Galaxy S5 Portrait */    
+#slider-thumbs{
+    margin-bottom:4px;
+}
+
+
+.thumb-slide-img{
+    height:100px;
+}
+.table-row-title{
+    font-weight: bold;
+}
+.panel-body {
+    padding: 8px;
+}
+.trst-group-item{
+    font-size:16px;
+}
+.form-control{
+    margin-bottom:8px;
+}
+.table {
+    margin-bottom: 3px;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: auto;
+}
+.item{
+    margin: auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+.selected img {
+	opacity:0.5;
+}
+
+
+</style>             
+<script>
+  $(document).ready(function(){
+      /* mobile accordion view*/
+     if (screen.width < 420 ){
+         console.log(screen.width );
+           $(".info-panel").addClass('panel-collapse collapse');  
+           $("#collapse_desc").addClass('in');  
+           $("#head_collapse_desc").attr("href", "#collapse_desc");
+           $("#header-collapse1").attr("href", "#collapse1");
+           $("#header-collapse2").attr("href", "#collapse2");
+
+     }
+    var mymap = L.map('mapdiv').setView([<%= @article.latitude %> , <%= @article.longitude %>], 18);
+    
+	L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    	subdomains: ['a','b','c'],
+      	maxZoom: 25
+	}).addTo( mymap );
+	var marker = L.marker([<%= @article.latitude %> , <%= @article.longitude %>]).addTo(mymap);
+	
+	/*CarrouseL and thumb slides*/
+	$('#myCarousel').carousel({
+    interval: 4000
+    });
+
+    // handles the carousel thumbnails
+    $('[id^=carousel-selector-]').click( function(){
+      var id_selector = $(this).attr("id");
+      var id = id_selector.substr(id_selector.length -1);
+      id = parseInt(id);
+      $('#myCarousel').carousel(id);
+      $('[id^=carousel-selector-]').removeClass('selected');
+      $(this).addClass('selected');
+    });
+    
+    // when the carousel slides, auto update
+    $('#myCarousel').on('slid', function (e) {
+      var id = $('.item.active').data('slide-number');
+      id = parseInt(id);
+      $('[id^=carousel-selector-]').removeClass('selected');
+      $('[id=carousel-selector-'+id+']').addClass('selected');
+    });
+  });  
+</script>
+    

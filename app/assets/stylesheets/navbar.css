@@ -1,0 +1,38 @@
+.navbar{
+  background-color: #4A5699 ;
+  border:none !important;
+  color:white !important;
+  font-size: 0.8em !important;
+  font-family: 'Roboto', sans-serif !important;
+  margin-bottom: 0px !important;
+}
+#user_name {
+  height:30px;
+  padding-right: 15px ;
+    margin-top: 10px;
+    border-right: 1px solid white;
+  vertical-align: middle !important;
+
+}
+.navbar-nav>li>a {
+  color: white  !important ;
+}
+.navbar-nav>li>a:hover {
+  color: #4A5699  !important ;
+  background-color: white !important;
+}
+.navbar .navbar-brand {
+  padding-top: 3px;
+    padding-bottom: 3px;
+}
+.navbar .navbar-brand img {
+  height: 40px;
+}
+
+@media only screen  and (max-width: 480px ) and  (orientation : portrait){
+.navbar{
+  font-size: 1em !important;
+
+}
+}
+
