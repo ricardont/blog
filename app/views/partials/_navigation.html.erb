@@ -17,7 +17,7 @@
                     <li><%=link_to "Inicio", root_path,  method: :get  %></li>
                     <li><%=link_to "Catalogo", "/articles",toggle: :collapse  %></li>
                     <li><%=link_to "Quiero Vender", root_path, toggle: :collapse  %></li>
-                    <li><%=link_to "Contacto", "/contacts/new" ,  method: :get,  toggle: :collapse  %></li>
+                    <li><%=link_to "Contacto", "/send_mail" ,  method: :post,  toggle: :collapse  %></li>
                     <li >
                         <% if user_signed_in?%>
                             <li><%= link_to "Publicar", "/articles/new" ,  method: :get,  toggle: :collapse  %> </li>

@@ -6,8 +6,8 @@
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	
   
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
- 
+<!--    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script> -->
+   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeca7EPBngJHvt54XQ9FI0DPcD9H1wfBU&libraries=places"></script>
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <%= javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= csrf_meta_tags %>
@@ -19,3 +19,9 @@
 	<%= yield %>
 </body>
 </html>
+<style>
+a:hover{text-decoration: underline !important;   border-bottom: none;}
+a{text-decoration: none !important; border-bottom: none;}
+}
+</style>
+

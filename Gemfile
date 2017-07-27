@@ -6,6 +6,7 @@ gem 'rails', '4.2.5.1'
 # Use sqlite3 as the database for Active Record
 group :development do
   gem 'sqlite3'
+  gem 'letter_opener'
 end
 group :production, :staging do
       gem 'pg'
@@ -19,7 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'coffee-script-source', '1.8.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+ gem 'therubyracer', platforms: :ruby
 gem 'jquery-turbolinks'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

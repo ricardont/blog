@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :articles 
   resources :images, only: [:create, :destroy, :update, :delete]
   devise_for :users
+  get 'contact', to: 'messages#new', as: 'contact'
+post 'contact', to: 'messages#create'
   #  get 'welcome/index'
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'

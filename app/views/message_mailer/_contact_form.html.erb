@@ -1,0 +1,35 @@
+
+<% loc ||=  '' %>  
+<% if loc == '' %>
+<% hide_msg =  '' %>
+<%else%>
+<% hide_msg =  'hide' %>
+<%end%>
+<form method="POST" id="contact_form" action="http://formspree.io/rontiverosmarquez@gmail.com">   
+    <input class= "form-control"  id="contact_input_name" type="text" name="name" placeholder="Nombre">
+    <input  class= "form-control" id="contact_input_email" type="email" name="email" placeholder="Email">
+    <input  class= "form-control" id="contact_input_phone"  type="text" name="phone" placeholder="Telefono">
+    <input  class= "form-control hide" id="contact_input_location"  type="text" name="location"  value="<%= loc ||=  '' %>   ">
+</form>
+    <textarea   form="contact_form " class= "form-control <%=hide_msg%> "  name="message" placeholder="Escríbenos" > </textarea>
+    <button form="contact_form"   type="submit" class="btn btn-default" id="btn-contact" >Enviar</button>
+
+<style>
+.hide{
+    display:none !important;
+}
+.input {
+  margin:15px !important;  
+  font-size:8px !important;
+
+}
+input[type="text"], input[type="password"], input[type="email"], select {
+    height: 2.0em ;
+}
+#btn-contact{
+    width: 97%;
+    margin: 8px;
+}
+
+</style>
+

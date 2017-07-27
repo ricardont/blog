@@ -14,18 +14,30 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-    config.action_mailer.default_url_options = { :host => "blog-rickywayne.c9users.io" }
-    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.default_url_options = { host: "blog-rickywayne.c9users.io" }
+ # config.action_mailer.delivery_method = :letter_opener
     
-    config.action_mailer.smtp_settings = {
-    address: "email-smtp.us-west-2.amazonaws.com",
-    port: "587",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["AKIAINEOOSVXKUORZTNQ"],
-    password: ENV["ApKy0Ve+TxOSDkOWAo3SEhMrvK/ZDu4ElHoS3rkx2XLc"]
-    }
-    
+  config.action_mailer.delivery_method = :smtp
+   #ses-smtp-user.20170723-125449
+
+
+#Server Name:	
+#
+#Port:	25, 465 or 587
+#Use Transport Layer Security (TLS):	Yes
+#Authentication:	Your SMTP credentials - see below.
+
+config.action_mailer.smtp_settings = {
+address: "smtp-relay.sendinblue.com",
+port: 587 ,
+domain: "blog-rickywayne.c9users.io" ,
+authentication: "plain",
+enable_starttls_auto: true,
+user_name: "rontiverosmarquez@gmail.com",
+password: "MxvADZty1HqgKCPL"
+}
+
+
     
     config.action_mailer.perform_deliveries = true
     config.action_mailer.default :charset => "utf-8"
